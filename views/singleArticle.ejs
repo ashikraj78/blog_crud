@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2><%= article.title %></h2>
+    <p><%= article.description %></p>
+    <h5><%= article.createdAt %></h5>
+
+    <a href="/articles/<%= article.id %>/edit">Update</a>
+    <a href="/articles/<%= article.id %>/delete">Delete</a>
+    <a href="/articles"> Back</a>
+
+    <form action="/articles/<%= article.id %>/comments" method="POST" >
+        <input type="text" name="content" placeholder="Add Comment">
+        <input type="submit" value="Add Comment">
+    </form>
+
+    <% comments.forEach(comment =>{ %>
+       <p><%= comment.content %> </p>
+       <a href="/comments/<%= comment._id %>/edit">edit</a>
+       <a href="/comments/<%= comment._id %>/delete">delete</a>
+    <% }) %>
+</body>
+</html>
